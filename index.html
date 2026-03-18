@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Samaira 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffcbd1, #FF0000);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #fff;
+    }
+
+    h2 {
+      color: #ffcbd1;
+      margin-bottom: 10px;
+    }
+
+    .card {
+      background: #c30010;
+      border-radius: 15px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+  <h1>Happy Birthday Samaira 🎂</h1>
+  <div class="card">
+    <h2>To the Best Girl ✨</h2>
+    <p>
+      Samaira, you are honestly one of those rare people who just stand out without even trying. Your humor is on another level — not basic, not forced, but naturally sharp and actually funny, which most people fail at. You have this vibe where you can make any situation lighter, any moment more interesting, and any conversation less boring. And it’s not just about jokes — it’s your personality, your energy, and the way you carry yourself that makes you different from everyone else.
+      <br><br>
+      You’re not just "funny" — you’re smart with it. There’s a difference. Anyone can crack random jokes, but having that level of humor that actually hits every time? That’s rare. And that’s you. You’re someone people enjoy being around without even realizing why — and the reason is simple: you bring life into everything.
+      <br><br>
+      On your birthday, just remember this — you’re already ahead of most people just by being yourself. Don’t ever tone it down, don’t ever try to fit in, because honestly, people like you aren’t meant to blend in. You’re meant to stand out.
+      <br><br>
+      Stay the same. Stay real. Stay that "best girl with elite humor" — because that’s exactly what makes you unforgettable.
+      <br><br>
+      Happy Birthday 🎉
+    </p>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const confetti = [];
+
+for (let i = 0; i < 150; i++) {
+  confetti.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 6 + 2,
+    d: Math.random() * 5 + 1,
+    color: ["#c30010", "#FF0000", "#ffcbd1"][Math.floor(Math.random() * 3)]
+  });
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  confetti.forEach((c) => {
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+    ctx.fillStyle = c.color;
+    ctx.fill();
+  });
+  update();
+}
+
+function update() {
+  confetti.forEach((c) => {
+    c.y += c.d;
+    if (c.y > canvas.height) {
+      c.y = 0;
+      c.x = Math.random() * canvas.width;
+    }
+  });
+}
+
+setInterval(draw, 20);
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>
